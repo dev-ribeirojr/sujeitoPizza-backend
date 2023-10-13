@@ -1,5 +1,6 @@
 import prismaClient from "../../prisma";
 import { compare } from "bcryptjs";
+import { sign } from "jsonwebtoken";
 
 interface AuthRequest {
   email: string;
@@ -33,8 +34,27 @@ class AuthUserService {
     }
 
     //gerar um tokem JWT e devolver os dados do usuário
+    const token = sign(
+      //payload dados a serem incluidos no token
+      {
+        name: user.name,
+        email: user.email,
+      },
+      //chave secreta para assinar o token de verificação
+      process.env.JWT_SECRET!,
+      //algoritmos de assinatura
+      {
+        subject: user.id,
+        expiresIn: "30d",
+      }
+    );
 
-    return { ok: true };
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      token,
+    };
   }
 }
 
