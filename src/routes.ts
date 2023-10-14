@@ -1,10 +1,21 @@
 import { Router } from "express";
 
+import { AddItemController } from "./controllers/order/AddItemController";
 import { AuthUserController } from "./controllers/user/AuthUserController";
+
 import { CreateUserController } from "./controllers/user/CreateUserController";
 import { CreateCategoryController } from "./controllers/category/CreateCategoryController";
+import { CreateOrderController } from "./controllers/order/CreateOrderController";
+
 import { DetailUserController } from "./controllers/user/DetailUserController";
+
+import { DeleteItemController } from "./controllers/order/DeleteItemController";
+import { DeleteOrderController } from "./controllers/order/DeleteOrderController";
+
 import { ListCategoryController } from "./controllers/category/ListCategoryController";
+import { ListByCategoryController } from "./controllers/product/ListByCategoryController";
+
+import { SendOrderController } from "./controllers/order/SendOrderController";
 
 // middleware
 import { isAuthenticated } from "./middlewares/isAuthenticated";
@@ -12,12 +23,7 @@ import { CreateProductController } from "./controllers/product/CreateProductCont
 
 import uploadConfig from "./config/multer";
 import multer from "multer";
-import { ListByCategoryController } from "./controllers/product/ListByCategoryController";
-import { CreateOrderController } from "./controllers/order/CreateOrderController";
-import { DeleteOrderController } from "./controllers/order/DeleteOrderController";
-import { AddItemController } from "./controllers/order/AddItemController";
-import { DeleteItemController } from "./controllers/order/DeleteItemController";
-import { SendOrderController } from "./controllers/order/SendOrderController";
+import { ListOrdersController } from "./controllers/order/ListOrdersController";
 
 const router = Router();
 
@@ -68,5 +74,7 @@ router.delete(
 );
 
 router.put("/order/send", isAuthenticated, new SendOrderController().handle);
+
+router.get("/orders", isAuthenticated, new ListOrdersController().handle);
 
 export { router };
