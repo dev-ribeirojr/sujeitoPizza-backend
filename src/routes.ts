@@ -30,6 +30,7 @@ import { SendOrderController } from "./controllers/order/SendOrderController";
 // middleware
 import { isAuthenticated } from "./middlewares/isAuthenticated";
 import { CreateProductController } from "./controllers/product/CreateProductController";
+import { DetailOrderController } from "./controllers/order/DetailOrderController";
 
 const router = Router();
 
@@ -82,5 +83,10 @@ router.delete(
 router.put("/order/send", isAuthenticated, new SendOrderController().handle);
 
 router.get("/orders", isAuthenticated, new ListOrdersController().handle);
+router.get(
+  "/order/detail",
+  isAuthenticated,
+  new DetailOrderController().handle
+);
 
 export { router };
