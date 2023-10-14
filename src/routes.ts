@@ -8,12 +8,14 @@ import { AuthUserController } from "./controllers/user/AuthUserController";
 import { CreateUserController } from "./controllers/user/CreateUserController";
 import { CreateCategoryController } from "./controllers/category/CreateCategoryController";
 import { CreateOrderController } from "./controllers/order/CreateOrderController";
+import { CreateProductController } from "./controllers/product/CreateProductController";
 
 //-- Add
 import { AddItemController } from "./controllers/order/AddItemController";
 
 //-- Detail
 import { DetailUserController } from "./controllers/user/DetailUserController";
+import { DetailOrderController } from "./controllers/order/DetailOrderController";
 
 //-- Delete
 import { DeleteItemController } from "./controllers/order/DeleteItemController";
@@ -26,11 +28,10 @@ import { ListOrdersController } from "./controllers/order/ListOrdersController";
 
 //Update
 import { SendOrderController } from "./controllers/order/SendOrderController";
+import { FinishOrderController } from "./controllers/order/FinishOrderController";
 
 // middleware
 import { isAuthenticated } from "./middlewares/isAuthenticated";
-import { CreateProductController } from "./controllers/product/CreateProductController";
-import { DetailOrderController } from "./controllers/order/DetailOrderController";
 
 const router = Router();
 
@@ -87,6 +88,12 @@ router.get(
   "/order/detail",
   isAuthenticated,
   new DetailOrderController().handle
+);
+
+router.put(
+  "/order/finish",
+  isAuthenticated,
+  new FinishOrderController().handle
 );
 
 export { router };
