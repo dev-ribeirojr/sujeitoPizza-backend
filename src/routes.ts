@@ -1,29 +1,35 @@
 import { Router } from "express";
+import uploadConfig from "./config/multer";
+import multer from "multer";
 
-import { AddItemController } from "./controllers/order/AddItemController";
 import { AuthUserController } from "./controllers/user/AuthUserController";
 
+//-- Create
 import { CreateUserController } from "./controllers/user/CreateUserController";
 import { CreateCategoryController } from "./controllers/category/CreateCategoryController";
 import { CreateOrderController } from "./controllers/order/CreateOrderController";
 
+//-- Add
+import { AddItemController } from "./controllers/order/AddItemController";
+
+//-- Detail
 import { DetailUserController } from "./controllers/user/DetailUserController";
 
+//-- Delete
 import { DeleteItemController } from "./controllers/order/DeleteItemController";
 import { DeleteOrderController } from "./controllers/order/DeleteOrderController";
 
+// List
 import { ListCategoryController } from "./controllers/category/ListCategoryController";
 import { ListByCategoryController } from "./controllers/product/ListByCategoryController";
+import { ListOrdersController } from "./controllers/order/ListOrdersController";
 
+//Update
 import { SendOrderController } from "./controllers/order/SendOrderController";
 
 // middleware
 import { isAuthenticated } from "./middlewares/isAuthenticated";
 import { CreateProductController } from "./controllers/product/CreateProductController";
-
-import uploadConfig from "./config/multer";
-import multer from "multer";
-import { ListOrdersController } from "./controllers/order/ListOrdersController";
 
 const router = Router();
 
