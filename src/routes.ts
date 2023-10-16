@@ -28,7 +28,7 @@ import { ListOrdersController } from "./controllers/order/ListOrdersController";
 
 //Update
 import { SendOrderController } from "./controllers/order/SendOrderController";
-import { FinishOrderController } from "./controllers/order/FinishOrderController";
+import { UpdateOrderController } from "./controllers/order/UpdateOrderController";
 
 // middleware
 import { isAuthenticated } from "./middlewares/isAuthenticated";
@@ -116,9 +116,9 @@ router.get(
 );
 
 router.put(
-  "/order/finish",
+  "/order/update",
   isAuthenticated,
-  new FinishOrderController().handle
+  new UpdateOrderController().handle
 );
 
 export { router };
