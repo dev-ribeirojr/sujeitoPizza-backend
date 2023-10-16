@@ -24,7 +24,7 @@ model User {
   name       String
   email      String
   password   String
-  role       Role
+  role       Role      @default(waiter)
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
 
