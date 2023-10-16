@@ -2,34 +2,6 @@ import { Router } from "express";
 import uploadConfig from "./config/multer";
 import multer from "multer";
 
-import { AuthUserController } from "./controllers/user/AuthUserController";
-
-//-- Create
-import { CreateUserController } from "./controllers/user/CreateUserController";
-import { CreateCategoryController } from "./controllers/category/CreateCategoryController";
-import { CreateOrderController } from "./controllers/order/CreateOrderController";
-import { CreateProductController } from "./controllers/product/CreateProductController";
-
-//-- Add
-import { AddItemController } from "./controllers/order/AddItemController";
-
-//-- Detail
-import { DetailUserController } from "./controllers/user/DetailUserController";
-import { DetailOrderController } from "./controllers/order/DetailOrderController";
-
-//-- Delete
-import { DeleteItemController } from "./controllers/order/DeleteItemController";
-import { DeleteOrderController } from "./controllers/order/DeleteOrderController";
-
-// List
-import { ListCategoryController } from "./controllers/category/ListCategoryController";
-import { ListByCategoryController } from "./controllers/product/ListByCategoryController";
-import { ListOrdersController } from "./controllers/order/ListOrdersController";
-
-//Update
-import { SendOrderController } from "./controllers/order/SendOrderController";
-import { UpdateOrderController } from "./controllers/order/UpdateOrderController";
-
 // middleware
 import {
   isAuthenticated,
@@ -37,7 +9,38 @@ import {
   orderPermission,
   orderUpdatePermission,
 } from "./middlewares";
-import { UpdateQuantityItemController } from "./controllers/order/UpdateQuantituItemController";
+
+// User
+import {
+  AuthUserController,
+  CreateUserController,
+  DetailUserController,
+} from "./controllers/user";
+
+// category
+import {
+  CreateCategoryController,
+  ListCategoryController,
+} from "./controllers/category";
+
+// product
+import {
+  CreateProductController,
+  ListByCategoryController,
+} from "./controllers/product";
+
+// order
+import {
+  AddItemController,
+  CreateOrderController,
+  DeleteItemController,
+  DeleteOrderController,
+  DetailOrderController,
+  ListOrdersController,
+  SendOrderController,
+  UpdateOrderController,
+  UpdateQuantityItemController,
+} from "./controllers/order";
 
 const router = Router();
 

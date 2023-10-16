@@ -48,8 +48,8 @@ class CreateUserService {
       },
     });
 
-    return { user };
+    return user;
   }
 }
 
-export default new CreateUserService();
+export { CreateUserService };

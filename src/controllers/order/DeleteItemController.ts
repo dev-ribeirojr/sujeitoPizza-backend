@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { DeleteItemService } from "../../services/order/DeleteItemService";
+import { DeleteItemService } from "../../services/order";
 class DeleteItemController {
   async handle(req: Request, res: Response) {
     const item_id = req.query.item_id as string;
