@@ -63,6 +63,7 @@ enum StepType {
   pending
   preparing
   readyToServe
+  served
 }
 
 model Order {
