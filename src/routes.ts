@@ -56,6 +56,7 @@ router.get("/me", isAuthenticated, new DetailUserController().handle);
 router.post(
   "/category",
   isAuthenticated,
+  isAdm,
   new CreateCategoryController().handle
 );
 
@@ -65,6 +66,7 @@ router.get("/category", isAuthenticated, new ListCategoryController().handle);
 router.post(
   "/product",
   isAuthenticated,
+  isAdm,
   upload.single("file"),
   new CreateProductController().handle
 );
