@@ -31,10 +31,13 @@ import { SendOrderController } from "./controllers/order/SendOrderController";
 import { UpdateOrderController } from "./controllers/order/UpdateOrderController";
 
 // middleware
-import { isAuthenticated } from "./middlewares/isAuthenticated";
-import { isAdm } from "./middlewares/isAdm";
-import { orderPermission } from "./middlewares/orderPermission";
-import { orderUpdatePermission } from "./middlewares/orderUpdatePermission";
+import {
+  isAuthenticated,
+  isAdm,
+  orderPermission,
+  orderUpdatePermission,
+} from "./middlewares";
+import { UpdateQuantityItemController } from "./controllers/order/UpdateQuantituItemController";
 
 const router = Router();
 
@@ -125,6 +128,13 @@ router.put(
   isAuthenticated,
   orderUpdatePermission,
   new UpdateOrderController().handle
+);
+
+router.put(
+  "/item/update",
+  isAuthenticated,
+  orderPermission,
+  new UpdateQuantityItemController().handle
 );
 
 export { router };
