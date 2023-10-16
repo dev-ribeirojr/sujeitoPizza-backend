@@ -33,6 +33,7 @@ import { FinishOrderController } from "./controllers/order/FinishOrderController
 // middleware
 import { isAuthenticated } from "./middlewares/isAuthenticated";
 import { isAdm } from "./middlewares/isAdm";
+import { orderPermission } from "./middlewares/orderPermission";
 
 const router = Router();
 
@@ -79,13 +80,29 @@ router.get(
 
 //-- ROTAS ORDER
 
-router.post("/order", isAuthenticated, new CreateOrderController().handle);
-router.delete("/order", isAuthenticated, new DeleteOrderController().handle);
+router.post(
+  "/order",
+  isAuthenticated,
+  orderPermission,
+  new CreateOrderController().handle
+);
+router.delete(
+  "/order",
+  isAuthenticated,
+  orderPermission,
+  new DeleteOrderController().handle
+);
 
-router.post("/order/add", isAuthenticated, new AddItemController().handle);
+router.post(
+  "/order/add",
+  isAuthenticated,
+  orderPermission,
+  new AddItemController().handle
+);
 router.delete(
   "/order/delete",
   isAuthenticated,
+  orderPermission,
   new DeleteItemController().handle
 );
 
