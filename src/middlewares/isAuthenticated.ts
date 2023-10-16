@@ -26,10 +26,9 @@ export function isAuthenticated(
       //options
     ) as Payload;
 
-      req.user_id = sub
+    req.user_id = sub;
 
     return next();
-
   } catch (err) {
     return res.status(401).end();
   }
