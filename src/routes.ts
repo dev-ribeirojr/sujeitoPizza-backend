@@ -34,6 +34,7 @@ import { UpdateOrderController } from "./controllers/order/UpdateOrderController
 import { isAuthenticated } from "./middlewares/isAuthenticated";
 import { isAdm } from "./middlewares/isAdm";
 import { orderPermission } from "./middlewares/orderPermission";
+import { orderUpdatePermission } from "./middlewares/orderUpdatePermission";
 
 const router = Router();
 
@@ -105,8 +106,12 @@ router.delete(
   orderPermission,
   new DeleteItemController().handle
 );
-
-router.put("/order/send", isAuthenticated, new SendOrderController().handle);
+router.put(
+  "/order/send",
+  isAuthenticated,
+  isAdm,
+  new SendOrderController().handle
+);
 
 router.get("/orders", isAuthenticated, new ListOrdersController().handle);
 router.get(
@@ -118,6 +123,7 @@ router.get(
 router.put(
   "/order/update",
   isAuthenticated,
+  orderUpdatePermission,
   new UpdateOrderController().handle
 );
 
