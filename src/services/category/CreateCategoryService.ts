@@ -6,10 +6,19 @@ interface CategoryRequest {
 
 class CreateCategoryService {
   async execute({ name }: CategoryRequest) {
-    console.log(name);
     if (name === "") {
-      throw new Error("Name invalid");
+      throw new Error("Categoria inválida");
     }
+
+    const categoryAlreadyExists = await prismaClient.category.findFirst({
+      where: {
+        name: name,
+      },
+    });
+    if (categoryAlreadyExists) {
+      throw new Error("Categoria já cadastrada!");
+    }
+
     const category = await prismaClient.category.create({
       data: {
         name: name,
