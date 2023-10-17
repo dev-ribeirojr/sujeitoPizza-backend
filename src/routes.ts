@@ -15,6 +15,7 @@ import {
   AuthUserController,
   CreateUserController,
   DetailUserController,
+  UpdateUserPasswordController,
 } from "./controllers/user";
 
 // category
@@ -62,6 +63,10 @@ router.post("/session", new AuthUserController().handle);
 
 // get
 router.get("/me", isAuthenticated, new DetailUserController().handle);
+
+// put
+
+router.put("/user", isAuthenticated, new UpdateUserPasswordController().handle);
 
 //  -- ROTAS CATEGORY --
 

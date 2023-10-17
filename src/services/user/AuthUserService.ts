@@ -53,6 +53,9 @@ class AuthUserService {
       id: user.id,
       name: user.name,
       email: user.email,
+      role: user.role,
+      updated_at: user.created_at,
+      created_at: user.updated_at,
       token,
     };
   }

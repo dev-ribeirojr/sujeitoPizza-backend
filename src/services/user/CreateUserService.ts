@@ -43,8 +43,11 @@ class CreateUserService {
       select: {
         //o que quero devolver
         id: true,
-        name: true,
         email: true,
+        name: true,
+        role: true,
+        updated_at: true,
+        created_at: true,
       },
     });
 
