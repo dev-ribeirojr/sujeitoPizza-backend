@@ -15,7 +15,7 @@ class AddItemService {
       },
     });
     if (itemAlreadyExists) {
-      throw new Error("Produto já Adicionado deseja adicionar mesmo assim?");
+      throw new Error("Produto já Adicionado!");
     }
 
     const order = await prismaClient.item.create({
