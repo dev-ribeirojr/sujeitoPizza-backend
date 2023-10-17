@@ -142,12 +142,12 @@ router.put(
 router.put(
   "/order/send",
   isAuthenticated,
-  isAdm,
+  orderPermission,
   new SendOrderController().handle
 );
 
 //delte
-router.delete(
+router.put(
   "/order",
   isAuthenticated,
   orderPermission,

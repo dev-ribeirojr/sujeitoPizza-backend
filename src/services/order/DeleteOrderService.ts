@@ -6,9 +6,13 @@ interface OrderRequest {
 
 class DeleteOrderService {
   async execute({ order_id }: OrderRequest) {
-    const order = await prismaClient.order.delete({
+    const order = await prismaClient.order.update({
       where: {
         id: order_id,
+      },
+      data: {
+        status: "disabled",
+        updated_at: new Date(),
       },
     });
 

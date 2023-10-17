@@ -25,6 +25,7 @@ model User {
   email      String
   password   String
   role       Role      @default(waiter)
+  status     Boolean   @default(true)
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
 
@@ -66,15 +67,20 @@ enum StepType {
   served
 }
 
+enum StatusOrder {
+  active
+  disabled
+}
+
 model Order {
-  id         String    @id @default(uuid())
+  id         String      @id @default(uuid())
   table      Int
-  status     Boolean   @default(false)
-  draft      Boolean   @default(true)
+  status     StatusOrder @default(active)
+  draft      Boolean     @default(true)
   name       String?
-  created_at DateTime? @default(now())
-  updated_at DateTime? @default(now())
-  step       StepType  @default(pending)
+  created_at DateTime?   @default(now())
+  updated_at DateTime?   @default(now())
+  step       StepType    @default(pending)
 
   items Item[]
 
