@@ -41,6 +41,7 @@ import {
   UpdateOrderController,
   UpdateQuantityItemController,
 } from "./controllers/order";
+import { UpdateCategoryController } from "./controllers/category/UpdateCategoryController";
 
 const router = Router();
 
@@ -72,6 +73,15 @@ router.post(
 );
 // get
 router.get("/category", isAuthenticated, new ListCategoryController().handle);
+
+//put
+
+router.put(
+  "/category",
+  isAuthenticated,
+  isAdm,
+  new UpdateCategoryController().handle
+);
 
 //  -- ROTAS DE PRODUTOS --
 
