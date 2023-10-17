@@ -21,6 +21,7 @@ import {
 import {
   CreateCategoryController,
   ListCategoryController,
+  UpdateCategoryController,
 } from "./controllers/category";
 
 // product
@@ -41,7 +42,6 @@ import {
   UpdateOrderController,
   UpdateQuantityItemController,
 } from "./controllers/order";
-import { UpdateCategoryController } from "./controllers/category/UpdateCategoryController";
 
 const router = Router();
 
