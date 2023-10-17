@@ -45,6 +45,7 @@ import {
   UpdateOrderController,
   UpdateQuantityItemController,
 } from "./controllers/order";
+import { ListUsersController } from "./controllers/user/ListUsersController";
 
 const router = Router();
 
@@ -64,6 +65,7 @@ router.post("/session", new AuthUserController().handle);
 
 // get
 router.get("/me", isAuthenticated, new DetailUserController().handle);
+router.get("/users", isAuthenticated, isAdm, new ListUsersController().handle);
 
 // put
 router.put("/user", isAuthenticated, new UpdateUserPasswordController().handle);
