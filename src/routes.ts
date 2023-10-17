@@ -107,7 +107,6 @@ router.put(
   "/product",
   isAuthenticated,
   isAdm,
-  upload.single("file"),
   new UpdateProductController().handle
 );
 
