@@ -48,6 +48,7 @@ class CreateUserService {
         role: true,
         updated_at: true,
         created_at: true,
+        status: true,
       },
     });
 

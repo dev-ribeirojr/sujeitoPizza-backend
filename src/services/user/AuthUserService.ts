@@ -56,6 +56,7 @@ class AuthUserService {
       role: user.role,
       updated_at: user.created_at,
       created_at: user.updated_at,
+      status: user.status,
       token,
     };
   }

@@ -9,6 +9,10 @@ interface UpdateUserRequest {
 
 class UpdateUserPasswordService {
   async execute({ password, new_password, user_id }: UpdateUserRequest) {
+    if (new_password === "" || password === "") {
+      throw new Error("Preencha os campos");
+    }
+
     const user = await prismaClient.user.findFirst({
       where: {
         id: user_id,
