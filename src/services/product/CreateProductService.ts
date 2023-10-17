@@ -22,7 +22,7 @@ class CreateProductService {
       description === "" ||
       category_id === ""
     ) {
-      throw new Error("Produto inválido");
+      throw new Error("Preencha os campos!");
     }
 
     const productAlreadyExists = await prismaClient.product.findFirst({

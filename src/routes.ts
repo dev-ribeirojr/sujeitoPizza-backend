@@ -28,6 +28,7 @@ import {
 import {
   CreateProductController,
   ListByCategoryController,
+  UpdateProductController,
 } from "./controllers/product";
 
 // order
@@ -99,6 +100,15 @@ router.get(
   "/category/product",
   isAuthenticated,
   new ListByCategoryController().handle
+);
+
+// put
+router.put(
+  "/product",
+  isAuthenticated,
+  isAdm,
+  upload.single("file"),
+  new UpdateProductController().handle
 );
 
 //  -- ROTAS ORDER --
