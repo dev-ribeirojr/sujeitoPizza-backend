@@ -7,17 +7,30 @@ class UpdateProductController {
 
     const updateProductService = new UpdateProductService();
 
-    //renomeando ao invés de filename para banner
+    if (!req.file) {
+      const product = await updateProductService.execute({
+        name,
+        price,
+        description,
+        category_id,
+        product_id,
+      });
 
-    const product = await updateProductService.execute({
-      name,
-      price,
-      description,
-      category_id,
-      product_id,
-    });
+      return res.json(product);
+    } else {
+      const { originalname, filename: banner } = req.file;
 
-    return res.json(product);
+      const product = await updateProductService.execute({
+        name,
+        price,
+        description,
+        banner,
+        category_id,
+        product_id,
+      });
+
+      return res.json(product);
+    }
   }
 }
 export { UpdateProductController };

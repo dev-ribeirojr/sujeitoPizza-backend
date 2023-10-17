@@ -6,6 +6,7 @@ interface UpdateProductRequest {
   price: string;
   description: string;
   category_id: string;
+  banner?: string;
 }
 
 class UpdateProductService {
@@ -15,6 +16,7 @@ class UpdateProductService {
     description,
     category_id,
     product_id,
+    banner,
   }: UpdateProductRequest) {
     if (
       name === "" ||
@@ -40,20 +42,38 @@ class UpdateProductService {
       throw new Error("Produto já cadastrado");
     }
 
-    const product = prismaClient.product.update({
-      where: {
-        id: product_id,
-      },
-      data: {
-        name,
-        category_id,
-        price,
-        description,
-        updated_at: new Date(),
-      },
-    });
+    if (!banner) {
+      const product = prismaClient.product.update({
+        where: {
+          id: product_id,
+        },
+        data: {
+          name,
+          category_id,
+          price,
+          description,
+          updated_at: new Date(),
+        },
+      });
 
-    return product;
+      return product;
+    } else {
+      const product = prismaClient.product.update({
+        where: {
+          id: product_id,
+        },
+        data: {
+          name,
+          category_id,
+          price,
+          description,
+          banner,
+          updated_at: new Date(),
+        },
+      });
+
+      return product;
+    }
   }
 }
 
