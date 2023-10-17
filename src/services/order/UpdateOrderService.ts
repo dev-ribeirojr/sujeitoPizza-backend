@@ -31,6 +31,7 @@ class UpdateOrderService {
       },
       data: {
         step: step,
+        updated_at: new Date(),
       },
     });
 

@@ -12,6 +12,7 @@ class SendOrderService {
       },
       data: {
         draft: false,
+        updated_at: new Date(),
       },
     });
     return order;
