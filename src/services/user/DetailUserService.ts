@@ -13,6 +13,9 @@ class DetailUserService {
         name: true,
         email: true,
         created_at: true,
+        updated_at: true,
+        role: true,
+        status: true,
       },
     });
 
